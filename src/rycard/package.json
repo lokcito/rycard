@@ -1,6 +1,14 @@
 {
   "name": "rycard",
-  "version": "0.1.0",
+  "version": "0.1.1",
+  "homepage": "https://github.com/lokcito/rycard",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lokcito/rycard.git"
+  },
+  "keywords": ["card", "card-component"],
+  "license": "ISC",
+  "author": "Ray Rojas <me@rayrojas.info> (http://rayrojas.info)",
   "private": false,
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
