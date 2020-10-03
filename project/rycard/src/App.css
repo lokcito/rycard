@@ -1,0 +1,183 @@
+
+.ulala-loading-check {
+  border-width: 2px;
+  border-style: solid;
+  border-color: rgba(0, 0, 0, 0.2);
+  border-left-color: #5cb85c;
+  animation: loaderSpin 1.2s infinite linear;
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+  border-radius: 50%;
+  width: 1em;
+  height: 1em;
+}
+.ulala-loading-check.red {
+  border: 2px solid #ffc9c9;
+  border-left-color: #ff4c4c;
+}
+.ulala-loading-check.small {
+  width: 2em;
+  height: 2em;
+  border-width: 1px;
+}
+.ulala-loading-check.big {
+  width: 3em;
+  height: 3em;
+}
+.ulala-loading-check.huge {
+  width: 4em;
+  height: 4em;
+}
+/*https://codepen.io/scottloway/pen/zqoLyQ*/
+.ulala-loading-check.load-complete {
+  -webkit-animation: none;
+  animation: none;
+  border-color: #5cb85c;
+  transition: border 500ms ease-out;
+}
+
+.ulala-loading-check.load-complete .checkmark {
+  display: block;
+}
+.ulala-loading-check .checkmark {
+  display: none;
+}
+.ulala-loading-check.small .checkmark:after {
+  height: 1.2em;
+  width: 0.6em;
+  left: 0.3em;
+  top: 1em;
+}
+.ulala-loading-check.big .checkmark:after {
+  height: 1.5em;
+  width: 0.75em;
+  left: 0.6em;
+  top: 1.6em;
+}
+.ulala-loading-check.huge .checkmark:after {
+  height: 2.5em;
+  width: 0.9em;
+  left: 0.6em;
+  top: 2.2em;
+}
+.ulala-loading-check .checkmark:after {
+  opacity: 1;
+  transform-origin: left top;
+  border-right: 3px solid #5cb85c;
+  border-top: 3px solid #5cb85c;
+  content: '';
+  position: absolute;
+  animation-duration: 800ms;
+  animation-timing-function: ease;
+  transform: scaleX(-1) rotate(135deg);
+}
+.ulala-loading-check.small .checkmark:after{
+  animation-name: checkmarkSmall;
+}
+.ulala-loading-check.big .checkmark:after{
+  animation-name: checkmarkBig;
+}
+.ulala-loading-check.huge .checkmark:after{
+  animation-name: checkmarkHuge;
+}
+@keyframes loaderSpin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+  /*height: 1.5em;*/
+  /*width: 0.75em;*/
+/*@keyframes checkmark {*/
+/*  0% {*/
+/*    height: 0;*/
+/*    width: 0;*/
+/*    opacity: 1;*/
+/*  }*/
+/*  20% {*/
+/*    height: 0;*/
+/*    width: 0.75em;*/
+/*    opacity: 1;*/
+/*  }*/
+/*  40% {*/
+/*    height: 2em;*/
+/*    width: 0.75em;*/
+/*    opacity: 1;*/
+/*  }*/
+/*  100% {*/
+/*    height: 1.5em;*/
+/*    width: 0.75em;*/
+/*    opacity: 1;*/
+/*  }*/
+/*}*/
+@keyframes checkmarkSmall {
+  0% {
+    height: 0;
+    width: 0;
+    opacity: 1;
+  }
+  20% {
+    height: 0;
+    width: 0.6em;
+    opacity: 1;
+  }
+  40% {
+    height: 1.3em;
+    width: 0.6em;
+    opacity: 1;
+  }
+  100% {
+    height: 1.2em;
+    width: 0.6em;
+    opacity: 1;
+  }
+}
+
+@keyframes checkmarkBig {
+  0% {
+    height: 0;
+    width: 0;
+    opacity: 1;
+  }
+  20% {
+    height: 0;
+    width: 0.75em;
+    opacity: 1;
+  }
+  40% {
+    height: 1.8em;
+    width: 0.75em;
+    opacity: 1;
+  }
+  100% {
+    height: 1.5em;
+    width: 0.75em;
+    opacity: 1;
+  }
+}
+
+@keyframes checkmarkHuge {
+  0% {
+    height: 0;
+    width: 0;
+    opacity: 1;
+  }
+  20% {
+    height: 0;
+    width: 0.9em;
+    opacity: 1;
+  }
+  40% {
+    height: 2.7em;
+    width: 0.9em;
+    opacity: 1;
+  }
+  100% {
+    height: 2.5em;
+    width: 0.9em;
+    opacity: 1;
+  }
+}
