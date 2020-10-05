@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import styles from './styles.module.css'
 
 class Rycircle extends Component {
   getClass(){
