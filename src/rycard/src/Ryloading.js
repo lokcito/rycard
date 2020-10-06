@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
 import styles from './styles.module.css'
-
+// console.log(">", styles.ulalaLoadingCheck);
 class Rycircle extends Component {
   getClass(){
-  	var _str="ulala-loading-check ";
+  	var _str=styles['ulala-loading-check'] + " ";
   	if(this.props.done){
-  		_str+=" load-complete ";
+  		_str+=" " + styles['load-complete'] + " ";
   	}
 		if(this.props.size){
 			_str+=" "+ this.props.size+" ";
 		}
 		if(this.props.error){
-			_str+=" red ";
+			_str+=" " + styles['red'] + " ";
 		}
 		return _str;
   }
@@ -41,7 +41,7 @@ class Rycircle extends Component {
   showComponent() {
 		return <div 
 			className={this.getClass()} >
-			<div className="checkmark draw"></div>
+			<div className={styles['checkmark'] + " draw"}></div>
 		</div>
   }
   
@@ -92,16 +92,16 @@ class Ryloading extends Component {
   getAlertClass() {
   	// console.log("<>", this.props.alert);
 		if ( this.props.alert === 'done' ) {
-			return 'alert-success';
+			return styles['alert-success'];
 		} else if ( this.props.alert === 'error' ) {
-			return 'alert-danger';
+			return styles['alert-danger'];
 		}
   }
 	
   showAlert() {
 		if (this.props.text) {
 			if ( this.props.text.length > 0 ) {
-				return <div className={"alert " +  this.getAlertClass()} role="alert">
+				return <div className={styles["alert"] + " " +  this.getAlertClass()} role="alert">
 					{this.props.text}
 				</div>
 			}
