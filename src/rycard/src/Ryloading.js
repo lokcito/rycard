@@ -92,16 +92,16 @@ class Ryloading extends Component {
   getAlertClass() {
   	// console.log("<>", this.props.alert);
 		if ( this.props.alert === 'done' ) {
-			return styles['alert-success'];
+			return 'alert-success';
 		} else if ( this.props.alert === 'error' ) {
-			return styles['alert-danger'];
+			return 'alert-danger';
 		}
   }
 	
   showAlert() {
 		if (this.props.text) {
 			if ( this.props.text.length > 0 ) {
-				return <div className={styles["alert"] + " " +  this.getAlertClass()} role="alert">
+				return <div className={"alert" + " " +  this.getAlertClass()} role="alert">
 					{this.props.text}
 				</div>
 			}

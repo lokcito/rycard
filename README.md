@@ -21,16 +21,32 @@ import 'rycard/dist/index.css'
 
 class Example extends Component {
   constructor(props){
+    super(props);
     this.state = {
       'endpoint': '/my-route-where-i-charge',
       'email': 'someone@somedomain.com',
       'price': 100.00
     };
+    this.onResponse = this.onResponse.bind(this);
+    this.onNativeResponse = this.onNativeResponse.bind(this);
+    this.onError = this.onError.bind(this);
+  }
+  onResponse(response) {
+    console.log('data response:', response);
+  }
+  onNativeResponse(response) {
+    console.log('full response:', onNativeResponse);
+  }  
+  onError(err) {
+    console.log('error', err);
   }
   render() {
     return <Rycard endpoint={this.state.endpoint} 
       email={this.state.email} 
-      price={this.state.price} />
+      price={this.state.price} 
+      onNativeResponse={this.onNativeResponse} 
+      onResponse={this.onResponse} 
+      onError={this.onError} />
   }
 }
 ```
