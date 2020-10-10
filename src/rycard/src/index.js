@@ -47,15 +47,15 @@ class Rycard extends Component {
   }
   
   handleFormChange() {
-	this.setState({
-		...this.state.loading,
-		'loading': {
-			'alert': undefined
-		},
-		'resp': {
-			'text': undefined
-		}
-	});
+		this.setState({
+			'loading': {
+				...this.state.loading,
+				'alert': undefined
+			},
+			'resp': {
+				'text': undefined
+			}
+		});
   }
   
 	handleCardNumberChange(e) {
@@ -177,7 +177,7 @@ class Rycard extends Component {
   onRyLoadingReset() {
 		this.setState({
 		  loading: {
-			...this.state.loading,
+				...this.state.loading,
 				'status': 'hold',
 		  }
 		});
@@ -250,10 +250,19 @@ class Rycard extends Component {
 		  return;
 		}
 		const _this = this;
+		// console.log("><>", _this.state.loading);
+		if ( _this.state.loading.status !== 'hold' ) {
+			return ;
+		}
+		_this.animateLoading('running');
 		
-		this.animateLoading('running');
-		
-		const data = { 'email': this.props.email };
+		const data = { 'email': _this.props.email,
+			'price': _this.props.price, 
+			'card': _this.state.card.card.value,
+			'year': _this.state.card.expiry.year,
+			'month': _this.state.card.expiry.month,
+			'cvv': _this.state.card.cvv.value
+		};
 		const options = {
 		  method: 'POST',
 		  headers: { 'content-type': 'application/x-www-form-urlencoded' },
@@ -309,7 +318,7 @@ class Rycard extends Component {
 				<div className="col-12">
 				  <div className="form-group">
 					<label htmlFor="cc-number" 
-					  className="control-label">Number</label>
+					  className="control-label">Card Number</label>
 					<input id="cc-number" 
 					  type="text" 
 					  className={'form-control ' + this.getWarningClassOnFields('number')} 
@@ -322,9 +331,10 @@ class Rycard extends Component {
 			  <div className="row">
 				<div className="col-12">
 				  <label htmlFor="cc-exp" 
-					className="control-label">Expiry</label>
+					className="control-label">Expiry (Month/Year)</label>
 				  <input id="cc-exp" 
 						type="text" 
+						placeholder="12/2025" 
 						className={'form-control ' + this.getWarningClassOnFields('expiry')} 
 						onBlur={this.handleCardExpiryBlur} 
 						onChange={this.handleCardExpiryChange} />
@@ -351,7 +361,7 @@ class Rycard extends Component {
 						status={this.state.loading.status} 
 						alert={this.state.loading.alert}
 						onRyLoadingReset={this.onRyLoadingReset} />
-				  <div className="form-group mt-3 text-right">
+				  <div className="form-group mt-3 mb-1 text-right">
 					<button className="btn btn-primary" 
 					  disabled={!this.getIsSubmitIsOk()} 
 					  type="submit">Make Payment</button>
