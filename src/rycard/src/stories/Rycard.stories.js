@@ -76,6 +76,33 @@ export default {
         type: { summary: 'number' }
       },
     },
+    onResponse: {
+      description: 'Callback when the server response successful, the component return just the data.',
+      type: {
+        required: false,
+      },
+      table: {
+        type: { summary: 'function' }
+      },
+    },
+    onNativeResponse: {
+      description: 'Callback when the server response successful, the component return all the response.',
+      type: {
+        required: false,
+      },
+      table: {
+        type: { summary: 'function' }
+      },
+    },
+    onError: {
+      description: 'Callback when the server return error.',
+      type: {
+        required: false,
+      },
+      table: {
+        type: { summary: 'function' }
+      },
+    }
   },
 };
 
