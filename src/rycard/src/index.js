@@ -1,7 +1,3 @@
-// import React from 'react'
-// export const ExampleComponent = ({ text }) => {
-//   return <div className={styles.test}>Example Component: {text}</div>
-// }
 import React, { Component } from 'react';
 import qs from 'qs';
 
@@ -188,6 +184,8 @@ class Rycard extends Component {
 				'status': status,
 				'alert': status
 		  }
+		}, function(){
+			
 		});
 		
 		this.setState({
@@ -250,7 +248,7 @@ class Rycard extends Component {
 		  return;
 		}
 		const _this = this;
-		// console.log("><>", _this.state.loading);
+		
 		if ( _this.state.loading.status !== 'hold' ) {
 			return ;
 		}
@@ -293,7 +291,9 @@ class Rycard extends Component {
 		  .catch(function (error) {
 				t = "Oops, something has gone bad. Please reload the browser and try again.";
 				_this.animateLoading('error', t);
-				_this.props.onError(error);
+				if (typeof _this.props.onError === 'function') {
+					_this.props.onError(error);	
+				}
 		  });      
 		event.preventDefault();
   }
@@ -360,6 +360,7 @@ class Rycard extends Component {
 				  <Ryloading text={this.state.resp.text} 
 						status={this.state.loading.status} 
 						alert={this.state.loading.alert}
+						size={this.props.size}
 						onRyLoadingReset={this.onRyLoadingReset} />
 				  <div className="form-group mt-3 mb-1 text-right">
 					<button className="btn btn-primary" 
@@ -380,6 +381,7 @@ Rycard.defaultProps = {
 	email: "unknown@unknown.com",
 	price: 0,
 	endpoint: undefined,
+	size: 'small',
 	onResponse: function(){},
 	onError: function(){},
 	onNativeResponse: function(){}
